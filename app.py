@@ -2,8 +2,23 @@ from dash import Dash, html, dcc, Input, Output
 import pandas as pd
 import plotly.express as px
 
+import os
+
+print("Current Directory:", os.getcwd())
+print("Files:", os.listdir())
+print("Data Folder Exists:", os.path.exists("data"))
+
+
+from pathlib import Path
+
+csv_path = Path("data") / "shopify_sales_dataset_ml_eda_clean.csv"
+
+print("CSV Exists:", csv_path.exists())
+
+df = pd.read_csv(csv_path)
+
 # Load Data
-df = pd.read_csv("data\shopify_sales_dataset_ml_eda_clean.csv")
+#df = pd.read_csv("data\shopify_sales_dataset_ml_eda_clean.csv")
 
 df["order_date"] = pd.to_datetime(df["order_date"])
 
